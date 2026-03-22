@@ -17,31 +17,7 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Login to ClawHub
-        run: npx -y clawhub login --token "$CLAWHUB_TOKEN"
+      - name: Publish all skills
+        run: ./clawhub-publish.sh
         env:
           CLAWHUB_TOKEN: ${{ secrets.CLAWHUB_TOKEN }}
-
-      - name: Publish all skills
-        run: |
-          for skill_dir in skills/*/; do
-            skill_name=$(basename "$skill_dir")
-            skill_file="${skill_dir}SKILL.md"
-
-            if [ ! -f "$skill_file" ]; then
-              echo "::warning::Skipping ${skill_name}: no SKILL.md found"
-              continue
-            fi
-
-            # Parse version from frontmatter
-            version=$(awk '/^---$/{c++; next} c==1 && /^[[:space:]]*version:/{gsub(/[" ]/, "", $2); print $2; exit}' "$skill_file")
-
-            if [ -z "$version" ]; then
-              echo "::warning::Skipping ${skill_name}: no version found in frontmatter"
-              continue
-            fi
-
-            echo "::group::Publishing ${skill_name} v${version}"
-            npx -y clawhub publish "$PWD/${skill_dir}" --version "$version" || true
-            echo "::endgroup::"
-          done
