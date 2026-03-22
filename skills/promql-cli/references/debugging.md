@@ -88,9 +88,7 @@ promql 'rate(grpc_client_handled_total{grpc_code!="OK"}[5m])' --start 1h --outpu
 
 ## Finding the Right Metrics
 
-When you don't know which metrics or thresholds are meaningful for a given component, consult these resources before writing queries from scratch:
-
-**[Awesome Prometheus Alerts](https://samber.github.io/awesome-prometheus-alerts/rules)** ([GitHub](https://github.com/samber/awesome-prometheus-alerts)) — a curated collection of battle-tested PromQL alert rules organized by exporter. Use it to find relevant metric names and realistic thresholds for:
+When you don't know which metrics or thresholds are meaningful for a given component, start with `promql metrics` and `promql meta` to discover what your Prometheus instance exposes. For reference, the Awesome Prometheus Alerts project (samber/awesome-prometheus-alerts) maintains a curated collection of battle-tested PromQL alert rules organized by exporter, covering:
 
 | Domain | Exporters covered |
 | --- | --- |
@@ -104,11 +102,11 @@ When you don't know which metrics or thresholds are meaningful for a given compo
 | Observability | Thanos, Loki, Grafana Mimir, OpenTelemetry Collector |
 | Cloud | AWS CloudWatch, GCP Stackdriver, Azure, DigitalOcean |
 
-The alert expressions are valid PromQL — run them directly with promql-cli to inspect current values. Example workflow:
+Standard alert expressions are valid PromQL — you can use similar patterns with promql-cli to inspect current values. Example workflow:
 
 ```bash
-# 1. Find the alert rule for the component you're debugging on the rules page
-# 2. Copy the PromQL expression
+# 1. Discover relevant metrics in your Prometheus instance
+# 2. Write a PromQL expression based on common alerting patterns
 # 3. Run it to see the current value
 promql 'node_filesystem_avail_bytes{fstype!="tmpfs"} / node_filesystem_size_bytes{fstype!="tmpfs"} * 100' --output table
 

@@ -78,12 +78,12 @@ $env:GOOS="windows"; $env:GOARCH="amd64"; go build -o promql.exe ./
 
 ## Verify Installation
 
-Use the public Prometheus demo instance to test without a local server:
+Test against your local Prometheus instance (default: http://localhost:9090):
 
 ```bash
 promql --version
-promql 'up' --host https://prometheus.demo.prometheus.io
-promql metrics --host https://prometheus.demo.prometheus.io | head -20
+promql 'up' --host http://localhost:9090
+promql metrics --host http://localhost:9090 | head -20
 ```
 
 ## Configuration
