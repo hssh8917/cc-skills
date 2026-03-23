@@ -151,7 +151,7 @@ If a skill triggers too often or not often enough, please [open an issue](https:
 
 ## 🔄 Overlap
 
-If your team has its own conventions, create a company skill and declare the override explicitly near the top of its body: `"This skill supersedes \`samber/cc-skills@git-convention\` skill for [company] projects."`
+If your team has its own conventions, create a company skill and declare the override explicitly near the top of its body: `This skill supersedes samber/cc-skills@git-convention skill for [company] projects.`
 
 ## ✍️ Contribute
 
