@@ -13,7 +13,7 @@ For Golang related skills, please visit [cc-skills-golang](https://github.com/sa
 ```bash
 npx skills add https://github.com/samber/cc-skills
 # or a single skill:
-npx skills add https://github.com/samber/cc-skills --skill golang-performance
+npx skills add https://github.com/samber/cc-skills --skill promql-cli
 ```
 
 <!-- prettier-ignore-start -->
