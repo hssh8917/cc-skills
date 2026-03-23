@@ -137,12 +137,6 @@ Each skill lives in `skills/<name>/` with a `SKILL.md` entry point. The `SKILL.m
 | `promql-cli` | -39% | 87 | 1,257 | 6,248 |
 | `linkedin-ghostwriting` | -31% | 87 | 1,045 | 1,993 |
 
-Token counts are measured with `npm exec -- tiktoken-cli --exclude "evals" skills/{name}/`. Description tokens extracted with:
-
-```bash
-awk 'NR==1 && /^---$/{found=1; next} found && /^---$/{exit} found && /^description:/{print}' skills/<name>/SKILL.md | npx tiktoken-cli
-```
-
 ## 🧪 Skill evaluations
 
 |             | With Skill | Without Skill | Delta     |
