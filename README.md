@@ -1,6 +1,6 @@
 # Claude Code Skills
 
-AI agent skills are reusable instruction sets that extend your assistant with domain-specific expertise — loaded on demand so they don't bloat your context. This repository covers marketing and engineering skills authored by [@samber](https://github.com/samber).
+AI agent skills are reusable instruction sets that extend your assistant with domain-specific expertise, loaded on demand so they don't bloat your context. This repository covers marketing and engineering skills authored by [@samber](https://github.com/samber).
 
 For Golang related skills, please visit [cc-skills-golang](https://github.com/samber/cc-skills-golang).
 
@@ -13,10 +13,10 @@ For Golang related skills, please visit [cc-skills-golang](https://github.com/sa
 
 ## 🚀 How to use ?
 
-**Install with [skills](https://skills.sh/) CLI** (universal — works with any [Agent Skills](https://agentskills.io)-compatible tool):
+**Install with [skills](https://skills.sh/) CLI** (universal, works with any [Agent Skills](https://agentskills.io)-compatible tool):
 
 ```bash
-npx skills add https://github.com/samber/cc-skills
+npx skills add https://github.com/samber/cc-skills --skill '*'
 # or a single skill:
 npx skills add https://github.com/samber/cc-skills --skill promql-cli
 ```
@@ -128,13 +128,13 @@ Update with `cd ~/.antigravity/skills/cc-skills && git pull`.
 
 ## 🧩 Skills
 
-These skills are designed as **atomic units, cross-referencing units**. A skill may reference conventions defined in another. Installing only a subset will give you a partial — and potentially inconsistent — view of the guidelines. For best results, install all general-purpose skills together.
+These skills are designed as **atomic units, cross-referencing units**. A skill may reference conventions defined in another. Installing only a subset will give you a partial and potentially inconsistent view of the guidelines. For best results, install all general-purpose skills together.
 
 Each skill lives in `skills/<name>/` with a `SKILL.md` entry point. The `SKILL.md` is kept small with internal references to advanced markdown files, so only the relevant content is loaded into context.
 
-- **Description (tok)** — weight of the `description` field from YAML frontmatter, always loaded into Claude's context for skill triggering
-- **SKILL.md (tok)** — weight of the full `SKILL.md` file loaded when the skill triggers
-- **Directory (tok)** — weight of all files in the skill directory (SKILL.md + referenced markdown files)
+- **Description (tok)**: weight of the `description` field from YAML frontmatter, always loaded into Claude's context for skill triggering
+- **SKILL.md (tok)**: weight of the full `SKILL.md` file loaded when the skill triggers
+- **Directory (tok)**: weight of all files in the skill directory (SKILL.md + referenced markdown files)
 
 | Skill | Error rate gap | Description (tok) | SKILL.md (tok) | Directory (tok) |
 | --- | --- | --- | --- | --- |
@@ -152,7 +152,7 @@ See [EVALUATIONS.md](./EVALUATIONS.md) for the full per-skill breakdown.
 
 ## 🎯 Tuning Skill Triggers
 
-If a skill triggers too often or not often enough, please [open an issue](https://github.com/samber/cc-skills-golang/issues) suggesting a description change. The `description` field in SKILL.md frontmatter is the primary triggering mechanism — small wording adjustments can significantly improve trigger accuracy. Some `SKILL.md` might have `When to use` section which is another level of exclusion. Finally, `SKILL.md` are a entrypoint for lazy loading references with deep knowledge located in `references/`.
+If a skill triggers too often or not often enough, please [open an issue](https://github.com/samber/cc-skills-golang/issues) suggesting a description change. The `description` field in SKILL.md frontmatter is the primary triggering mechanism: small wording adjustments can significantly improve trigger accuracy. Some `SKILL.md` might have `When to use` section which is another level of exclusion. Finally, `SKILL.md` are a entrypoint for lazy loading references with deep knowledge located in `references/`.
 
 ## 🔄 Overlap
 
