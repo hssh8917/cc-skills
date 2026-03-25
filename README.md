@@ -141,12 +141,14 @@ Each skill lives in `skills/<name>/` with a `SKILL.md` entry point. The `SKILL.m
 | `conventional-git` | -36% | 73 | 1,446 | 1,446 |
 | `promql-cli` | -39% | 87 | 1,257 | 6,248 |
 | `linkedin-ghostwriting` | -31% | 87 | 1,045 | 1,993 |
+| `substack-ghostwriting` | -51% | 205 | 3,315 | 10,720 |
+| `technical-article-writer` | -33% | 147 | 2,295 | 5,737 |
 
 ## 🧪 Skill evaluations
 
 |             | With Skill | Without Skill | Delta     |
 | ----------- | ---------- | ------------- | --------- |
-| **Overall** | **99%**    | **64%**       | **+35pp** |
+| **Overall** | **100%**   | **60%**       | **+40pp** |
 
 See [EVALUATIONS.md](./EVALUATIONS.md) for the full per-skill breakdown.
 

@@ -6,7 +6,7 @@ license: MIT
 compatibility: Designed for Claude Code or similar AI coding agents.
 metadata:
   author: samber
-  version: "1.0.0"
+  version: "1.1.0"
   openclaw:
     emoji: "📰"
     homepage: https://github.com/samber/cc-skills
@@ -63,6 +63,8 @@ Complete the voice guide and get user validation before proceeding to the Writin
 
 ## Writing Workflow
 
+**Phase 1 is mandatory — always ask the user the intake questions and wait for answers before writing anything.** If the user already provided some context, extract what you can and ask only about missing pieces.
+
 ### Phase 0: Voice calibration (own voice mode)
 
 Skip this phase if ghostwriting (the Ghostwriting Workflow handles voice separately).
@@ -71,31 +73,38 @@ Ask the user for their **existing Substack URL**. If they have one, fetch 2-3 re
 
 If they don't have an existing Substack, ask: "How do you want to sound? Casual and conversational, professional and authoritative, or something else?" Use their answer plus any other writing samples they can share.
 
-### Phase 1: Content planning
+### Phase 1: Content planning (interview)
 
-Determine:
+**Stop and ask.** Present the intake questions below to the user and wait for their answers. Do not skip this phase, do not infer silently, and do not start drafting until you have explicit answers or confirmation on every item.
 
-1. **Topic**: What's this about?
+1. **Topic**: What's this about? If vague, ask what specific angle or story the reader should walk away with.
 2. **Format**: Newsletter issue (email-first) or web post (web-first)? See mode detection above.
-3. **Objective**: What's the concrete goal? Ask the user explicitly:
+3. **Audience**: Who reads this? (developers, founders, marketers, general tech, niche community...) A newsletter for junior devs reads very differently than one for CTOs.
+4. **Objective**: What's the concrete goal?
    - Grow subscribers (free or paid)?
    - Drive signups/traffic to an external product (SaaS, course, tool)?
    - Establish authority / thought leadership?
    - Nurture existing subscribers toward a paid tier?
    - Something else? The objective shapes the CTA, the hook angle, and where depth goes vs where the paywall or link sits.
-4. **Context**: Part of a series? What have recent posts covered?
-5. **Length**: Short (500-800 words), Standard (1000-1500), Deep dive (2000+)
+5. **Context**: Part of a series? What have recent posts covered?
+6. **Length**: Short (500-800 words), Standard (1000-1500), Deep dive (2000+)
+
+If critical pieces are missing (especially topic, audience, objective, or format), **ask and wait** — don't guess. A wrong assumption wastes an entire draft.
 
 If the user has Notes data (which Notes got engagement), use that to validate topic selection. Notes function as a cheap testing pipeline for long-form content.
 
-### Phase 2: Title and discovery optimization
+### Phase 2: Title and hook selection
 
-Generate **5 title/subject line variants** using these principles:
+Generate **5 title/subject line variants** and **3 hook options** (opening 2-3 sentences each). Present them together and **ask the user to pick or remix before proceeding**. Do not write the body until the user has validated a title and hook direction.
+
+**Title principles:**
 
 - Specificity beats vagueness
 - Promise a clear benefit or reveal
 - 6-10 words (readable on mobile and in search results)
 - For dev audiences: technical keywords filter for the right audience; "How to" and numbers perform well; avoid urgency/scarcity tactics
+
+**Hook types** — write 3 distinct hooks using different strategies (e.g. credibility, counter-narrative, curiosity, surprise, data). Each hook should be 2-3 sentences that could open the piece. Present them labeled (Hook A, Hook B, Hook C) with a brief note on the strategy used.
 
 **Newsletter issue — subject line + preview text:**
 
@@ -110,11 +119,13 @@ Generate **5 title/subject line variants** using these principles:
 - Assign to a publication section if applicable.
 - Read `references/web-post-formatting.md` for detailed SEO guidance.
 
+**Wait for the user to choose** a title and hook before moving to Phase 3.
+
 ### Phase 3: Write the content
 
-**Content structure** (both formats):
+Using the chosen title and hook, write the full piece. The hook opens the article, then continue with:
 
-1. **Hook** (2-3 sentences): Open with the most interesting thing. Not a preamble. The hook.
+1. **Hook** (chosen from Phase 2)
 2. **Context** (1-2 paragraphs): Why this matters now. What prompted this.
 3. **Body** (bulk): The actual content. Structure depends on content type.
 4. **Takeaway** (1-2 sentences): The one thing the reader should remember.
@@ -170,9 +181,9 @@ For newsletter issues: use images sparingly — many email clients block them by
 
 Offer to generate a **Midjourney prompt** for each suggested image. If the user accepts, use the latest Midjourney model conventions to write the prompt. Use `--ar 16:9` pr `--ar 3:1` for cover images and wide illustrations (optimal for Substack headers and social sharing), `--ar 3:2` for smaller inline images. Refer to up-to-date Midjourney documentation for current prompt syntax and parameters.
 
-### Phase 7: Social distribution posts
+### Phase 7: Social distribution posts (optional — offer, don't auto-generate)
 
-After the content is written, propose a **LinkedIn post** and a **Twitter/X post** to promote it. These are not summaries — they are standalone pieces of content that create enough curiosity or value to drive clicks.
+After the content is written, **ask the user if they want social distribution posts**. Do not generate them automatically. If accepted, write a **LinkedIn post** and/or a **Twitter/X post** to promote it. These are not summaries — they are standalone pieces of content that create enough curiosity or value to drive clicks.
 
 Read `references/social-distribution.md` for LinkedIn and Twitter/X post templates.
 
@@ -187,7 +198,7 @@ Read `references/social-distribution.md` for LinkedIn and Twitter/X post templat
 - Full issue in markdown, formatted for email readability
 - Image suggestions with placement notes (and Midjourney prompts if accepted)
 - A Notes teaser (2-3 sentences)
-- LinkedIn + Twitter/X distribution posts (ready to copy-paste)
+- LinkedIn + Twitter/X distribution posts (only if the user accepted)
 - If ghostwriting: the voice guide used
 
 **Web post:**
@@ -198,7 +209,7 @@ Read `references/social-distribution.md` for LinkedIn and Twitter/X post templat
 - Full post in markdown, formatted for web readability
 - Image suggestions with placement notes (and Midjourney prompts if accepted)
 - A Notes teaser (2-3 sentences)
-- LinkedIn + Twitter/X distribution posts (ready to copy-paste)
+- LinkedIn + Twitter/X distribution posts (only if the user accepted)
 - If ghostwriting: the voice guide used
 
 ---

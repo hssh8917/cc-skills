@@ -45,7 +45,7 @@ Example frontmatter:
 ```yaml
 ---
 name: skill-example
-description: Skill for X. Use when doing Y.
+description: "Skill for X. Use when doing Y."
 user-invocable: false
 license: MIT
 compatibility: Designed for Claude Code or similar AI coding agents. Requires git.

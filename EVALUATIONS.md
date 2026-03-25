@@ -9,12 +9,14 @@
 
 ## Summary
 
-| Skill                   | Version | Assertions | With Skill | Without Skill | Delta     | Uplift    | Concern                          |
-| ----------------------- | ------- | ---------- | ---------- | ------------- | --------- | --------- | -------------------------------- |
-| `linkedin-ghostwriting` | v1.0.0  | 46         | 98%        | **67%**       | +31pp     | 1.46×     | **Low delta, high without**      |
-| `conventional-git`      | v1.0.0  | 50         | 100%       | 64%           | +36pp     | 1.56×     |                                  |
-| `promql-cli`            | v1.0.0  | 36         | 100%       | 61%           | +39pp     | 1.64×     |                                  |
-| **Total (3 skills)**    |         | **132**    | **99%**    | **64%**       | **+35pp** | **1.55×** |                                  |
+| Skill                      | Version | Assertions | With Skill | Without Skill | Delta     | Uplift    | Concern                          |
+| -------------------------- | ------- | ---------- | ---------- | ------------- | --------- | --------- | -------------------------------- |
+| `linkedin-ghostwriting`    | v1.0.0  | 46         | 98%        | 67%           | +31pp     | 1.46×     | **Low delta, high without**      |
+| `technical-article-writer` | v1.1.0  | 95         | 100%       | 67%           | +33pp     | 1.49×     | **High without**                 |
+| `conventional-git`         | v1.0.0  | 50         | 100%       | 64%           | +36pp     | 1.56×     |                                  |
+| `promql-cli`               | v1.0.0  | 36         | 100%       | 61%           | +39pp     | 1.64×     |                                  |
+| `substack-ghostwriting`    | v1.1.0  | 101        | 100%       | 49%           | +51pp     | 2.04×     |                                  |
+| **Total (5 skills)**       |         | **328**    | **100%**   | **60%**       | **+40pp** | **1.67×** |                                  |
 
 
 ## `conventional-git` — v1.0.0
@@ -227,5 +229,277 @@ Model: claude-sonnet-4-6 — 1 run each — graded inline
 | 10.4 | does NOT just suggest a single instant query | <span class="g">✓</span> | <span class="g">✓</span> |
 
 </details>
+
+
+## `substack-ghostwriting` — v1.1.0
+
+| With Skill | Without Skill | Delta | Assertions |
+| ---------- | ------------- | ----- | ---------- |
+| 100%       | 49%           | +51pp | 101        |
+
+<details>
+<summary>Full breakdown (101 assertions)</summary>
+
+Model: claude-opus-4-6 — 1 run each — graded inline — adversarial evals (each has a trap the model falls into without the skill)
+
+| # | Assertion | With | Without |
+| --- | --- | --- | --- |
+| | **Eval 1: Evergreen content → web post, not newsletter** | **<span class="g">5/5</span>** | **<span class="r">2/5</span>** |
+| 1.1 | identifies this as a web post (not newsletter issue) based on 'evergreen' keyword | <span class="g">✓</span> | <span class="r">✗ treats as generic Substack post</span> |
+| 1.2 | mentions SEO title field or SEO optimization specific to web posts | <span class="g">✓</span> | <span class="r">✗ no Substack SEO title field</span> |
+| 1.3 | suggests a URL slug (short, keyword-rich) | <span class="g">✓</span> | <span class="r">✗ not suggested</span> |
+| 1.4 | does NOT treat this as a newsletter issue (no subject line / preview text focus) | <span class="g">✓</span> | <span class="g">✓</span> |
+| 1.5 | mentions table of contents for long content or web-specific formatting | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 2: Ghostwriting — interview before writing** | **<span class="g">5/5</span>** | **<span class="r">0/5</span>** |
+| 2.1 | does NOT write a full post immediately | <span class="g">✓</span> | <span class="r">✗ wrote draft immediately</span> |
+| 2.2 | asks for voice samples (transcripts, past writing, or media appearances) | <span class="g">✓</span> | <span class="r">✗ not asked</span> |
+| 2.3 | prioritizes transcripts over published writing as voice source | <span class="g">✓</span> | <span class="r">✗ no source prioritization</span> |
+| 2.4 | mentions building a voice guide before drafting | <span class="g">✓</span> | <span class="r">✗ no voice guide concept</span> |
+| 2.5 | asks about the CEO's natural speaking/writing patterns | <span class="g">✓</span> | <span class="r">✗ not asked</span> |
+| | **Eval 3: Gmail truncation warning for long newsletter** | **<span class="g">5/5</span>** | **<span class="r">1/5</span>** |
+| 3.1 | warns about Gmail truncation at ~102KB / ~3000 words | <span class="g">✓</span> | <span class="r">✗ no truncation warning</span> |
+| 3.2 | suggests keeping content under ~3000 words or acknowledges truncation risk | <span class="g">✓</span> | <span class="r">✗ complies with 4000-word request</span> |
+| 3.3 | uses short paragraphs (2-3 sentences) for email readability | <span class="g">✓</span> | <span class="g">✓</span> |
+| 3.4 | suggests code blocks under 10 lines with links to Gist for longer code | <span class="g">✓</span> | <span class="r">✗ no Gist links suggested</span> |
+| 3.5 | recommends a TL;DR at top for issues over 1500 words | <span class="g">✓</span> | <span class="r">✗ no TL;DR recommendation</span> |
+| | **Eval 4: Web post SEO — separate fields awareness** | **<span class="g">5/5</span>** | **<span class="r">3/5</span>** |
+| 4.1 | mentions the separate SEO title field (distinct from main title) | <span class="g">✓</span> | <span class="r">✗ no Substack SEO title field</span> |
+| 4.2 | writes or recommends an SEO description of 150-160 characters | <span class="g">✓</span> | <span class="g">✓</span> |
+| 4.3 | suggests a URL slug (short, keyword-rich, no dates) | <span class="g">✓</span> | <span class="g">✓</span> |
+| 4.4 | mentions Substack has high domain authority for SEO | <span class="g">✓</span> | <span class="r">✗ not mentioned</span> |
+| 4.5 | recommends internal linking to other Substack posts | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 5: Algorithm — subscriptions not engagement** | **<span class="g">5/5</span>** | **<span class="r">2/5</span>** |
+| 5.1 | explains algorithm optimizes for subscriptions/paid conversions, NOT engagement | <span class="g">✓</span> | <span class="r">✗ assumes engagement-based algorithm</span> |
+| 5.2 | explicitly discourages engagement bait, outrage, or hot takes | <span class="g">✓</span> | <span class="g">✓</span> |
+| 5.3 | mentions Recommendations from other publications as a top growth lever | <span class="g">✓</span> | <span class="r">✗ generic cross-promotion only</span> |
+| 5.4 | mentions Notes as a testing pipeline for long-form content | <span class="g">✓</span> | <span class="r">✗ not mentioned</span> |
+| 5.5 | references quality/consistency as primary growth driver | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 6: Notes — not threads, concise standalone** | **<span class="g">5/5</span>** | **<span class="r">0/5</span>** |
+| 6.1 | advises against thread-style content on Notes | <span class="g">✓</span> | <span class="r">✗ helps adapt thread format</span> |
+| 6.2 | recommends concise Notes (2-5 sentences) | <span class="g">✓</span> | <span class="r">✗ supports long-form threads</span> |
+| 6.3 | suggests using Notes as testing pipeline for long-form posts | <span class="g">✓</span> | <span class="r">✗ not mentioned</span> |
+| 6.4 | mentions likes as the primary Notes ranking signal | <span class="g">✓</span> | <span class="r">✗ no algorithm details</span> |
+| 6.5 | explains that Notes should have standalone value | <span class="g">✓</span> | <span class="r">✗ helps create thread series</span> |
+| | **Eval 7: Monetization — don't paywall under 1000 subs** | **<span class="g">5/5</span>** | **<span class="r">1/5</span>** |
+| 7.1 | advises against launching paid tier at 300 subscribers | <span class="g">✓</span> | <span class="r">✗ cautiously supportive</span> |
+| 7.2 | explains growth compounds faster than paid conversion at small scale | <span class="g">✓</span> | <span class="r">✗ not articulated</span> |
+| 7.3 | references the ~3% free-to-paid conversion baseline | <span class="g">✓</span> | <span class="r">✗ no conversion benchmarks</span> |
+| 7.4 | recommends keeping everything free and focusing on growth first | <span class="g">✓</span> | <span class="r">✗ suggests testing paid content</span> |
+| 7.5 | suggests alternative monetization paths (coaching, consulting) | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 8: Social distribution — don't announce, lead with insight** | **<span class="g">5/5</span>** | **<span class="r">1/5</span>** |
+| 8.1 | does NOT start with 'I just published' or similar announcement | <span class="g">✓</span> | <span class="r">✗ default promotion pattern</span> |
+| 8.2 | leads with an insight, hook, or the 90% result | <span class="g">✓</span> | <span class="r">✗ leads with announcement</span> |
+| 8.3 | gives 30-40% of value upfront so post works standalone | <span class="g">✓</span> | <span class="r">✗ structured as teaser</span> |
+| 8.4 | uses line breaks between sentences for LinkedIn readability | <span class="g">✓</span> | <span class="g">✓</span> |
+| 8.5 | post works even if the reader never clicks the link | <span class="g">✓</span> | <span class="r">✗ requires click for value</span> |
+| | **Eval 9: Voice matching — single source warning** | **<span class="g">5/5</span>** | **<span class="r">0/5</span>** |
+| 9.1 | warns against anchoring voice analysis on a single source | <span class="g">✓</span> | <span class="r">✗ works with single source</span> |
+| 9.2 | asks for additional sources (transcripts, social, Slack, talks) | <span class="g">✓</span> | <span class="r">✗ not asked</span> |
+| 9.3 | explains that blog posts are edited and may differ from natural voice | <span class="g">✓</span> | <span class="r">✗ no distinction</span> |
+| 9.4 | prioritizes transcripts or spoken content over published writing | <span class="g">✓</span> | <span class="r">✗ no source prioritization</span> |
+| 9.5 | does NOT immediately write in a 'captured' voice from one blog post | <span class="g">✓</span> | <span class="r">✗ attempts to write immediately</span> |
+| | **Eval 10: Paywall placement — value above the fold** | **<span class="g">4/4</span>** | **<span class="g">4/4</span>** |
+| 10.1 | advises against paywalling the intro/hook/beginning | <span class="g">✓</span> | <span class="g">✓</span> |
+| 10.2 | recommends giving enough free value above the fold | <span class="g">✓</span> | <span class="g">✓</span> |
+| 10.3 | explains that free content drives growth and recommendations | <span class="g">✓</span> | <span class="g">✓</span> |
+| 10.4 | suggests placing paywall after delivering strong value | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 11: Subject line + preview text complementarity** | **<span class="g">4/4</span>** | **<span class="r">1/4</span>** |
+| 11.1 | preview text does NOT repeat or paraphrase the subject line | <span class="g">✓</span> | <span class="r">✗ paraphrases cost-cutting theme</span> |
+| 11.2 | preview text complements/extends with new information | <span class="g">✓</span> | <span class="r">✗ echoes same proposition</span> |
+| 11.3 | preview text is approximately 90 characters or under | <span class="g">✓</span> | <span class="r">✗ defaults to meta-description length</span> |
+| 11.4 | explains subject line + preview text should work as a pair | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 12: Substack special blocks — contextual suggestions** | **<span class="g">5/5</span>** | **<span class="r">1/5</span>** |
+| 12.1 | suggests a subscribe button for free readers | <span class="g">✓</span> | <span class="r">✗ no Substack subscribe block</span> |
+| 12.2 | suggests a share button after the strong insight | <span class="g">✓</span> | <span class="r">✗ no Substack share block</span> |
+| 12.3 | mentions pull quote for the most quotable line | <span class="g">✓</span> | <span class="g">✓</span> |
+| 12.4 | recommends reply prompt (replies are an algorithm signal) | <span class="g">✓</span> | <span class="r">✗ no algorithm signal awareness</span> |
+| 12.5 | references Substack-specific content blocks | <span class="g">✓</span> | <span class="r">✗ generic formatting only</span> |
+| | **Eval 13: Email paragraph walls — 4-5 sentence paragraphs in newsletter** | **<span class="g">4/4</span>** | **<span class="g">4/4</span>** |
+| 13.1 | flags the paragraph as too long for email newsletter format | <span class="g">✓</span> | <span class="g">✓</span> |
+| 13.2 | recommends breaking into 2-3 sentence paragraphs | <span class="g">✓</span> | <span class="g">✓</span> |
+| 13.3 | explains email clients render narrow columns making long paragraphs feel like walls | <span class="g">✓</span> | <span class="g">✓</span> |
+| 13.4 | does NOT say the paragraph is fine as-is | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 14: Notes don't support video — user wants to upload video** | **<span class="g">4/4</span>** | **<span class="r">3/4</span>** |
+| 14.1 | warns that Substack Notes does not support video uploads | <span class="g">✓</span> | <span class="g">✓</span> |
+| 14.2 | suggests alternatives (GIF, screenshots, link to video hosted elsewhere) | <span class="g">✓</span> | <span class="g">✓</span> |
+| 14.3 | still recommends using Notes as a testing pipeline for the idea | <span class="g">✓</span> | <span class="r">✗ no testing pipeline concept</span> |
+| 14.4 | does NOT help upload video to Notes as if it's supported | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 15: Long code in newsletter — 30+ lines inline** | **<span class="g">5/5</span>** | **<span class="r">4/5</span>** |
+| 15.1 | advises against including 35 lines of code in a newsletter email | <span class="g">✓</span> | <span class="g">✓</span> |
+| 15.2 | recommends linking to a GitHub Gist or repo for the full code | <span class="g">✓</span> | <span class="g">✓</span> |
+| 15.3 | suggests including a short 2-5 line excerpt inline for context | <span class="g">✓</span> | <span class="g">✓</span> |
+| 15.4 | explains code rendering varies by email client (Outlook may strip formatting) | <span class="g">✓</span> | <span class="g">✓</span> |
+| 15.5 | mentions the ~10 line threshold for email code blocks | <span class="g">✓</span> | <span class="r">✗ no specific threshold mentioned</span> |
+| | **Eval 16: Embeds in newsletter issue — YouTube + tweets** | **<span class="g">5/5</span>** | **<span class="g">5/5</span>** |
+| 16.1 | warns that embeds (YouTube, tweets) degrade to links/previews in email | <span class="g">✓</span> | <span class="g">✓</span> |
+| 16.2 | recommends not relying on embeds for critical content in newsletter issues | <span class="g">✓</span> | <span class="g">✓</span> |
+| 16.3 | suggests alternatives (screenshots of tweets, link to video with description) | <span class="g">✓</span> | <span class="g">✓</span> |
+| 16.4 | distinguishes between web rendering (embeds work) and email rendering (they don't) | <span class="g">✓</span> | <span class="g">✓</span> |
+| 16.5 | does NOT just say 'looks great, go ahead' | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 17: URL slug with dates for evergreen web post** | **<span class="g">5/5</span>** | **<span class="r">4/5</span>** |
+| 17.1 | advises removing the date from the URL slug | <span class="g">✓</span> | <span class="g">✓</span> |
+| 17.2 | explains dates in URLs make evergreen content look stale over time | <span class="g">✓</span> | <span class="g">✓</span> |
+| 17.3 | suggests a dateless alternative | <span class="g">✓</span> | <span class="g">✓</span> |
+| 17.4 | keeps slug to 3-6 words, keyword-rich | <span class="g">✓</span> | <span class="r">✗ no specific 3-6 word guideline</span> |
+| 17.5 | flags the date in the title as problematic for evergreen content | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 18: Gaming the Recommendations system algorithmically** | **<span class="g">5/5</span>** | **<span class="r">4/5</span>** |
+| 18.1 | explains the Recommendations system is fully human-curated, not algorithmic | <span class="g">✓</span> | <span class="g">✓</span> |
+| 18.2 | clarifies you cannot game Recommendations through engagement signals | <span class="g">✓</span> | <span class="g">✓</span> |
+| 18.3 | describes the actual path: write quality content, engage with other writers, build genuine relationships | <span class="g">✓</span> | <span class="g">✓</span> |
+| 18.4 | mentions Recommendations appear during subscribe flow (highest conversion moment) | <span class="g">✓</span> | <span class="r">✗ describes mechanism but not its conversion significance</span> |
+| 18.5 | does NOT describe algorithmic tricks to optimize for recommendations | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 19: Prioritizing Substack Boost at 200 subscribers** | **<span class="g">5/5</span>** | **<span class="r">3/5</span>** |
+| 19.1 | advises against prioritizing Boost at 200 subscribers | <span class="g">✓</span> | <span class="g">✓</span> |
+| 19.2 | explains Boost is low impact at small scale (Tier 4 or equivalent) | <span class="g">✓</span> | <span class="r">✗ no tier ranking or systematic framework</span> |
+| 19.3 | recommends higher-impact levers: consistent publishing, Notes as testing pipeline, Recommendations | <span class="g">✓</span> | <span class="g">✓</span> |
+| 19.4 | mentions Recommendations from larger publications as the highest-impact growth lever | <span class="g">✓</span> | <span class="r">✗ not identified as highest-impact</span> |
+| 19.5 | does NOT endorse Boost as the primary growth strategy at this stage | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 20: Subject line too long for mobile — 80+ chars** | **<span class="g">5/5</span>** | **<span class="r">4/5</span>** |
+| 20.1 | flags the subject line as too long (especially for mobile at ~35-40 chars visible) | <span class="g">✓</span> | <span class="g">✓</span> |
+| 20.2 | recommends front-loading the interesting part in the first 35-40 characters | <span class="g">✓</span> | <span class="g">✓</span> |
+| 20.3 | suggests a shorter alternative under 60 characters | <span class="g">✓</span> | <span class="g">✓</span> |
+| 20.4 | mentions specific character limits for different clients (mobile, Gmail, Yahoo) | <span class="g">✓</span> | <span class="r">✗ gives generic '40-60' range, no per-client breakdown</span> |
+| 20.5 | does NOT just evaluate the subject line on content quality alone | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 21: Sections overload at 5 posts** | **<span class="g">5/5</span>** | **<span class="r">2/5</span>** |
+| 21.1 | advises against creating 7 sections with only 5 posts | <span class="g">✓</span> | <span class="g">✓</span> |
+| 21.2 | recommends starting with 2-4 sections maximum | <span class="g">✓</span> | <span class="r">✗ says '1-2' or '2-3' (different threshold)</span> |
+| 21.3 | explains sections should wait until 20+ posts to be meaningful | <span class="g">✓</span> | <span class="r">✗ says '15-25+' (different threshold)</span> |
+| 21.4 | notes each section gets its own RSS feed and subscribe option | <span class="g">✓</span> | <span class="r">✗ not mentioned</span> |
+| 21.5 | suggests consolidating into fewer, broader sections | <span class="g">✓</span> | <span class="g">✓</span> |
+
+</details>
+
+
+## `technical-article-writer` — v1.1.0
+
+| With Skill | Without Skill | Delta | Assertions |
+| ---------- | ------------- | ----- | ---------- |
+| 100%       | 67%           | +33pp | 95         |
+
+<details>
+<summary>Full breakdown (95 assertions)</summary>
+
+Model: claude-opus-4-6 — 1 run each — graded inline — adversarial evals (each has a trap the model falls into without the skill)
+
+| # | Assertion | With | Without |
+| --- | --- | --- | --- |
+| | **Eval 1: Phase-gated workflow — ask before writing** | **<span class="g">5/5</span>** | **<span class="r">0/5</span>** |
+| 1.1 | does NOT write a full article immediately | <span class="g">✓</span> | <span class="r">✗ writes full blog post</span> |
+| 1.2 | asks about the specific aspect of Java performance | <span class="g">✓</span> | <span class="r">✗ covers multiple aspects broadly</span> |
+| 1.3 | asks about the target audience | <span class="g">✓</span> | <span class="r">✗ defaults to mid-level</span> |
+| 1.4 | asks about the content type (tutorial, benchmark, explainer) | <span class="g">✓</span> | <span class="r">✗ defaults to generic blog format</span> |
+| 1.5 | asks about the thesis or key takeaway | <span class="g">✓</span> | <span class="r">✗ picks generic thesis</span> |
+| | **Eval 2: Idea quality filter — push back on textbook topic** | **<span class="g">5/5</span>** | **<span class="r">0/5</span>** |
+| 2.1 | pushes back on the generic 'basics of Docker Compose' angle | <span class="g">✓</span> | <span class="r">✗ complies with the request</span> |
+| 2.2 | references or applies a novelty filter | <span class="g">✓</span> | <span class="r">✗ no novelty filter concept</span> |
+| 2.3 | suggests finding a specific struggle, surprise, or insight | <span class="g">✓</span> | <span class="r">✗ proceeds with basics</span> |
+| 2.4 | does NOT immediately write a basic tutorial | <span class="g">✓</span> | <span class="r">✗ starts writing or outlining immediately</span> |
+| 2.5 | helps the user find a more compelling angle | <span class="g">✓</span> | <span class="r">✗ no angle exploration</span> |
+| | **Eval 3: 10 title variants, not 3-5** | **<span class="g">5/5</span>** | **<span class="r">2/5</span>** |
+| 3.1 | generates 10 or more title variants | <span class="g">✓</span> | <span class="r">✗ generates 5-7 titles</span> |
+| 3.2 | uses different hook strategies across titles | <span class="g">✓</span> | <span class="g">✓</span> |
+| 3.3 | includes specific technical keywords (MongoDB, PostgreSQL) | <span class="g">✓</span> | <span class="g">✓</span> |
+| 3.4 | avoids superlatives ('ultimate', 'complete') | <span class="g">✓</span> | <span class="r">✗ uses 'The Complete Guide...' pattern</span> |
+| 3.5 | provides brief notes or rankings on why each works | <span class="g">✓</span> | <span class="r">✗ lists without detailed rationale</span> |
+| | **Eval 4: Content type matching — Bug Hunt template** | **<span class="g">5/5</span>** | **<span class="r">4/5</span>** |
+| 4.1 | identifies or recommends the Bug Hunt content type | <span class="g">✓</span> | <span class="r">✗ suggests generic narrative structure</span> |
+| 4.2 | includes a 'first hypothesis' or 'dead ends' section | <span class="g">✓</span> | <span class="g">✓</span> |
+| 4.3 | recommends building tension with wrong hypotheses | <span class="g">✓</span> | <span class="g">✓</span> |
+| 4.4 | includes the fix/solution as a distinct section | <span class="g">✓</span> | <span class="g">✓</span> |
+| 4.5 | ends with a generalizable lesson beyond this specific bug | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 5: Show-then-tell principle for code** | **<span class="g">4/4</span>** | **<span class="r">2/4</span>** |
+| 5.1 | leads with a code example BEFORE the conceptual explanation | <span class="g">✓</span> | <span class="r">✗ explains concept first, then code</span> |
+| 5.2 | code snippet is under 20 lines and focused on one concept | <span class="g">✓</span> | <span class="g">✓</span> |
+| 5.3 | annotates or explains non-obvious lines in the code | <span class="g">✓</span> | <span class="g">✓</span> |
+| 5.4 | conceptual explanation follows the code example | <span class="g">✓</span> | <span class="r">✗ concept-first order</span> |
+| | **Eval 6: Steelman for opinion piece** | **<span class="g">4/4</span>** | **<span class="r">2/4</span>** |
+| 6.1 | includes a section addressing the strongest arguments FOR microservices | <span class="g">✓</span> | <span class="g">✓</span> |
+| 6.2 | the steelman is substantive, not a straw man | <span class="g">✓</span> | <span class="r">✗ brief dismissive treatment when told to 'go all in'</span> |
+| 6.3 | uses concrete examples, not just abstract reasoning | <span class="g">✓</span> | <span class="g">✓</span> |
+| 6.4 | quantifies claims where possible | <span class="g">✓</span> | <span class="r">✗ qualitative arguments without specific numbers</span> |
+| | **Eval 7: Anti-pattern detection — burying the lede** | **<span class="g">5/5</span>** | **<span class="g">5/5</span>** |
+| 7.1 | moves the 73% finding to the opening | <span class="g">✓</span> | <span class="g">✓</span> |
+| 7.2 | removes the 'rapidly evolving tech landscape' preamble | <span class="g">✓</span> | <span class="g">✓</span> |
+| 7.3 | explicitly calls out the buried lede as the problem | <span class="g">✓</span> | <span class="g">✓</span> |
+| 7.4 | removes 'In this article, we'll explore' meta-framing | <span class="g">✓</span> | <span class="g">✓</span> |
+| 7.5 | the rewritten intro hooks the reader immediately | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 8: Copywriting framework application** | **<span class="g">4/4</span>** | **<span class="r">3/4</span>** |
+| 8.1 | uses or references a named copywriting framework (PAS, AIDA, BAB) | <span class="g">✓</span> | <span class="r">✗ writes intuitively, no named framework</span> |
+| 8.2 | hook addresses the reader's pain before presenting the solution | <span class="g">✓</span> | <span class="g">✓</span> |
+| 8.3 | includes stakes or agitation — cost of slow CI | <span class="g">✓</span> | <span class="g">✓</span> |
+| 8.4 | intro accomplishes: hook + stakes + promise | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 9: Tutorial completeness — prerequisites and verification** | **<span class="g">5/5</span>** | **<span class="r">4/5</span>** |
+| 9.1 | includes an explicit prerequisites section | <span class="g">✓</span> | <span class="g">✓</span> |
+| 9.2 | shows expected result/output after key steps | <span class="g">✓</span> | <span class="g">✓</span> |
+| 9.3 | includes a verification section at the end | <span class="g">✓</span> | <span class="r">✗ ends at last implementation step</span> |
+| 9.4 | includes next steps or related topics section | <span class="g">✓</span> | <span class="g">✓</span> |
+| 9.5 | steps are numbered and sequential | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 10: Title finalization after full draft** | **<span class="g">4/4</span>** | **<span class="r">3/4</span>** |
+| 10.1 | recommends reconsidering the title | <span class="g">✓</span> | <span class="g">✓</span> |
+| 10.2 | suggests 2-3 alternatives reflecting actual content (data integrity) | <span class="g">✓</span> | <span class="g">✓</span> |
+| 10.3 | explains titles should be revisited after writing as a methodology | <span class="g">✓</span> | <span class="r">✗ suggests better titles but not as a general principle</span> |
+| 10.4 | alternatives are more specific than the original | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 11: Diataxis — mixing content types diagnosis** | **<span class="g">4/4</span>** | **<span class="r">3/4</span>** |
+| 11.1 | identifies the problem as mixing content types | <span class="g">✓</span> | <span class="g">✓</span> |
+| 11.2 | references or applies the Diataxis framework | <span class="g">✓</span> | <span class="r">✗ describes problem in general terms only</span> |
+| 11.3 | recommends splitting into separate pieces | <span class="g">✓</span> | <span class="g">✓</span> |
+| 11.4 | explains why tutorials should not drift into theory | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 12: Image suggestions with Midjourney specifics** | **<span class="g">5/5</span>** | **<span class="r">3/5</span>** |
+| 12.1 | suggests 1-3 images with specific placement | <span class="g">✓</span> | <span class="g">✓</span> |
+| 12.2 | each image has a stated purpose | <span class="g">✓</span> | <span class="g">✓</span> |
+| 12.3 | each image has a description of what it should depict | <span class="g">✓</span> | <span class="g">✓</span> |
+| 12.4 | offers to generate Midjourney prompts | <span class="g">✓</span> | <span class="r">✗ not mentioned</span> |
+| 12.5 | mentions aspect ratio conventions (16:9 or 3:1 for hero, 3:2 for inline) | <span class="g">✓</span> | <span class="r">✗ no aspect ratios</span> |
+| | **Eval 13: "We Rewrote It" missing "what went wrong" section** | **<span class="g">5/5</span>** | **<span class="r">4/5</span>** |
+| 13.1 | pushes back on omitting difficulties/failures | <span class="g">✓</span> | <span class="g">✓</span> |
+| 13.2 | explains the 'what went wrong' section is critical for credibility | <span class="g">✓</span> | <span class="g">✓</span> |
+| 13.3 | notes that without failures, the article reads like a press release | <span class="g">✓</span> | <span class="g">✓</span> |
+| 13.4 | suggests specific prompts to surface challenges | <span class="g">✓</span> | <span class="g">✓</span> |
+| 13.5 | recommends the 'We Rewrote It in X' structure with 'what went wrong' at ~15% | <span class="g">✓</span> | <span class="r">✗ no named template or percentage allocation</span> |
+| | **Eval 14: Benchmark article burying methodology** | **<span class="g">5/5</span>** | **<span class="r">2/5</span>** |
+| 14.1 | recommends NOT leading with results | <span class="g">✓</span> | <span class="g">✓</span> |
+| 14.2 | explains methodology must come before results to establish trust | <span class="g">✓</span> | <span class="g">✓</span> |
+| 14.3 | references or applies the Benchmark/Data-Driven content type structure | <span class="g">✓</span> | <span class="r">✗ no named template</span> |
+| 14.4 | suggests methodology section at ~20% of article before the results section | <span class="g">✓</span> | <span class="r">✗ no percentage allocation</span> |
+| 14.5 | notes that 'no trust in setup = no trust in conclusions' | <span class="g">✓</span> | <span class="r">✗ expresses concept differently</span> |
+| | **Eval 15: Too many lessons diluting impact** | **<span class="g">5/5</span>** | **<span class="g">5/5</span>** |
+| 15.1 | advises limiting to 3-5 lessons maximum | <span class="g">✓</span> | <span class="g">✓</span> |
+| 15.2 | explains more lessons dilute impact and reduce memorability | <span class="g">✓</span> | <span class="g">✓</span> |
+| 15.3 | suggests leading with the most surprising lesson, not the first chronologically | <span class="g">✓</span> | <span class="g">✓</span> |
+| 15.4 | recommends each lesson needs a specific story, not just an abstract principle | <span class="g">✓</span> | <span class="g">✓</span> |
+| 15.5 | helps prioritize which 3-5 lessons are strongest | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 16: Momentum killers in transitions** | **<span class="g">5/5</span>** | **<span class="g">5/5</span>** |
+| 16.1 | identifies ALL three transitions as momentum killers | <span class="g">✓</span> | <span class="g">✓</span> |
+| 16.2 | names them as an anti-pattern (not just 'could be better') | <span class="g">✓</span> | <span class="g">✓</span> |
+| 16.3 | suggests specific alternatives using forward reference, question, contrast, or escalation | <span class="g">✓</span> | <span class="g">✓</span> |
+| 16.4 | provides rewritten examples that pull the reader forward | <span class="g">✓</span> | <span class="g">✓</span> |
+| 16.5 | does NOT say the transitions are acceptable | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 17: Explainer starting with edge cases** | **<span class="g">5/5</span>** | **<span class="r">4/5</span>** |
+| 17.1 | recommends starting with the simplest mental model, not edge cases | <span class="g">✓</span> | <span class="g">✓</span> |
+| 17.2 | references or applies progressive disclosure principle | <span class="g">✓</span> | <span class="g">✓</span> |
+| 17.3 | explains starting complex loses readers who need the foundation first | <span class="g">✓</span> | <span class="g">✓</span> |
+| 17.4 | suggests the Explainer structure with percentage allocations | <span class="g">✓</span> | <span class="r">✗ gives flow but no percentages or named template</span> |
+| 17.5 | does NOT agree to start with edge cases | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 18: Hook type mismatch — celebration for a bug hunt** | **<span class="g">5/5</span>** | **<span class="r">4/5</span>** |
+| 18.1 | suggests a Curiosity or Surprise hook instead of Celebration | <span class="g">✓</span> | <span class="g">✓</span> |
+| 18.2 | explains celebration hooks resolve tension upfront, killing the narrative | <span class="g">✓</span> | <span class="g">✓</span> |
+| 18.3 | the suggested hook creates tension (the problem) before revealing the resolution | <span class="g">✓</span> | <span class="g">✓</span> |
+| 18.4 | references or applies named hook types from a taxonomy | <span class="g">✓</span> | <span class="r">✗ no named taxonomy, just general advice</span> |
+| 18.5 | does NOT open with 'We just saved $40K/month' or similar celebration | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 19: Wall of code anti-pattern — 50-line block** | **<span class="g">5/5</span>** | **<span class="g">5/5</span>** |
+| 19.1 | flags the 50-line code block as a wall of code anti-pattern | <span class="g">✓</span> | <span class="g">✓</span> |
+| 19.2 | recommends breaking it into smaller annotated chunks (<20 lines each) | <span class="g">✓</span> | <span class="g">✓</span> |
+| 19.3 | suggests linking to the full config in a repo/Gist | <span class="g">✓</span> | <span class="g">✓</span> |
+| 19.4 | recommends showing only the interesting/relevant parts inline | <span class="g">✓</span> | <span class="g">✓</span> |
+| 19.5 | explains unannotated large code blocks lose readers | <span class="g">✓</span> | <span class="g">✓</span> |
+| | **Eval 20: PASTOR framework — too much 'offer'** | **<span class="g">5/5</span>** | **<span class="r">4/5</span>** |
+| 20.1 | applies PASTOR framework correctly with all components | <span class="g">✓</span> | <span class="g">✓</span> |
+| 20.2 | devotes ~80% of the intro to the problem/transformation, not the article description | <span class="g">✓</span> | <span class="g">✓</span> |
+| 20.3 | only ~20% describes what the article covers (the 'offer') | <span class="g">✓</span> | <span class="g">✓</span> |
+| 20.4 | explains the 80/20 rule for PASTOR intros | <span class="g">✓</span> | <span class="r">✗ no explicit 80/20 ratio stated</span> |
+| 20.5 | does NOT spend majority of intro on 'what you'll learn' meta-framing | <span class="g">✓</span> | <span class="g">✓</span> |
+
+</details>
+
 
 <!-- prettier-ignore-end -->

@@ -129,6 +129,10 @@ Apply these copywriting principles:
 
 **Allbound Strategy:** Content (inbound) triggers conversations (outbound). Design posts to drive DMs and profile visits, not just impressions.
 
+## Style
+
+Use unicode bold instead of simple bold styling. Much easier to copy-paste into Linkedin for a human.
+
 ## References
 
 - [references/hook-frameworks.md](references/hook-frameworks.md) — Six proven hook frameworks with examples

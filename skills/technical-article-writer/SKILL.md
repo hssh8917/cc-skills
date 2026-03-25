@@ -6,7 +6,7 @@ license: MIT
 compatibility: Designed for Claude Code or similar AI coding agents.
 metadata:
   author: samber
-  version: "1.0.0"
+  version: "1.1.0"
   openclaw:
     emoji: "📝"
     homepage: https://github.com/samber/cc-skills
@@ -27,11 +27,11 @@ Developer audiences have a built-in BS detector. The best technical content lead
 
 ## Workflow
 
-Follow these phases in order. Each phase produces a concrete artifact the user reviews before moving on. If the user already provided context (topic, audience, structure), skip ahead.
+Follow these phases in order. Each phase produces a concrete artifact the user reviews before moving on. **Phase 1 is mandatory — always ask the user the intake questions and wait for answers before writing anything.** If the user already provided some context, extract what you can and ask only about missing pieces.
 
-### Phase 1: Idea sharpening
+### Phase 1: Idea sharpening (interview)
 
-Before writing anything, clarify what the article is. Ask the user (or infer from context):
+**Stop and ask.** Before writing anything, present the intake questions below to the user and wait for their answers. Do not skip this phase, do not infer silently, and do not start drafting until you have explicit answers or confirmation on every item. Ask the user (or extract from context and confirm):
 
 1. **Topic**: What specific thing are you writing about?
 2. **Objective**: What's the concrete goal? Ask the user explicitly:
@@ -169,7 +169,7 @@ Present the article in clean markdown with:
 - The full article body
 - Image suggestions with placement notes (and Midjourney prompts if accepted)
 - A "Title alternatives" section at the end with 2-3 runner-up titles
-- A social teaser (2-3 sentence version for Twitter/LinkedIn promotion)
+- A social teaser (only if the user accepted — offer after the draft, don't auto-generate)
 
 ---
 
