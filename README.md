@@ -1,4 +1,4 @@
-# Claude Code Skills
+# Agent Skills
 
 AI agent skills are reusable instruction sets that extend your assistant with domain-specific expertise, loaded on demand so they don't bloat your context. This repository covers marketing and engineering skills authored by [@samber](https://github.com/samber).
 
