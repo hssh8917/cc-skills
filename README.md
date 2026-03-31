@@ -16,7 +16,7 @@ For Golang-related skills, please visit [cc-skills-golang](https://github.com/sa
 **Install with [skills](https://skills.sh/) CLI** (universal, works with any [Agent Skills](https://agentskills.io)-compatible tool):
 
 ```bash
-npx skills add https://github.com/samber/cc-skills --skill '*'
+npx skills add https://github.com/samber/cc-skills --all
 # or a single skill:
 npx skills add https://github.com/samber/cc-skills --skill promql-cli
 ```
